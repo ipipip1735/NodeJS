@@ -44,18 +44,32 @@ client.connect({}, function (frame) {
     console.log("~~connect~~");
     // console.log(frame);
 
-    // client.send("/ctl/cc", body = 'cccccccc', headers = {});
 
-
-    client.subscribe("/queue/12", (message) => {
+    client.subscribe("/ctl/sub/12", (message) => {
         console.log("~~subscribe~~");
         console.log(message);
 
     }, headers = {});
+
+    // client.send("/ctl/cc", body = 'cccccccc', headers = {});
+
+
+    // for (let i = 0; i < 3; i++) {
+    //
+    //     setTimeout(() => {
+    //         client.send("/ctl/cc", body = 'cccccccc', headers = {});
+    //     }, 1000 * i);
+    // }
+
 });
 
 
-// client.onreceive = function (frame) {
-//     console.log("~~onreceive~~");
-//     console.log(frame);
-// };
+client.onreceive = function (frame) {
+    console.log("~~onreceive~~");
+    console.log(frame);
+};
+
+
+    setTimeout(() => {
+        client.send("/ctl/cc/we", body = 'cccccccc', headers = {});
+    }, 3000);

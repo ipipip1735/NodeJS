@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "dependencies" :{
+  "dependencies": {
     "ws": "^7.2.0",
     "webstomp-client": "^1.2.6"
   }
