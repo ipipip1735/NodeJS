@@ -1,0 +1,16 @@
+{
+  "name": "NodeJS",
+  "version": "1.0.0",
+  "description": "NodeJS basic and third party",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies" :{
+    "ws": "^7.2.0",
+    "webstomp-client": "^1.2.6"
+  }
+}
