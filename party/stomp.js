@@ -2,7 +2,7 @@ const WebSocket = require('ws');
 const webSocket = new WebSocket('ws://192.168.0.126:8080/ep');
 webSocket.onopen = function (event) {
     console.log("~~onopen~~");
-    // console.log(event);
+    console.log(event);
 
     console.log("binaryType is " + webSocket.binaryType);
     console.log("bufferedAmount is " + webSocket.bufferedAmount);
@@ -37,12 +37,25 @@ webSocket.onmessage = function (messageEvent) {
 };
 
 
+var Webstomp = require('webstomp-client');
+let client = Webstomp.over(webSocket);
+
+client.connect({}, function (frame) {
+    console.log("~~connect~~");
+    // console.log(frame);
+
+    // client.send("/ctl/cc", body = 'cccccccc', headers = {});
 
 
-// var Webstomp = require('webstomp-client');
-// let client = Webstomp.over(webSocket);
-//
-// client.connect({}, function (frame) {
-//     console.log("~~message~~");
+    client.subscribe("/queue/12", (message) => {
+        console.log("~~subscribe~~");
+        console.log(message);
+
+    }, headers = {});
+});
+
+
+// client.onreceive = function (frame) {
+//     console.log("~~onreceive~~");
 //     console.log(frame);
-// });
+// };
