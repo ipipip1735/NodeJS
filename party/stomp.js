@@ -39,13 +39,13 @@ webSocket.onmessage = function (messageEvent) {
 
 var Webstomp = require('webstomp-client');
 let client = Webstomp.over(webSocket);
-
+var subscription;
 client.connect({}, function (frame) {
     console.log("~~connect~~");
     // console.log(frame);
 
 
-    client.subscribe("/ctl/sub/12", (message) => {
+    subscription = client.subscribe("/topic/something", (message) => {
         console.log("~~subscribe~~");
         console.log(message);
 
@@ -70,6 +70,15 @@ client.onreceive = function (frame) {
 };
 
 
-    setTimeout(() => {
-        client.send("/ctl/cc/we", body = 'cccccccc', headers = {});
-    }, 3000);
+var number = setInterval(() => {
+    client.send("/topic/something", body = 'cccccccc', headers = {});
+}, 2000);
+
+
+
+
+setTimeout(()=>{
+    clearInterval(number);
+    if(subscription.unsubscribe())console.log("unsubscribe");
+
+}, 9000);
