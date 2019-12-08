@@ -3,9 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>nodeJS</title>
-    <script src="index.js"></script>
+<!--    <script src="index.js"></script>-->
+    <script src="node_modules/stompjs/lib/stomp.js"></script>
+    <script src="node_modules/webstomp-client/dist/webstomp.js"></script>
+
+
 </head>
 <body>
 
 </body>
+
+<script>
+    // var client = Stomp.client("ws://192.168.0.126:8080/ep");
+    //
+    //
+    // var subscription;
+    // client.connect({}, function(frame) {
+    //     console.log("~~connect~~");
+    //     console.log(frame);
+    //
+    //     // subscription = client.subscribe("/topic/something", (frame, f, g) => {
+    //     //     console.log("~~subscribe~~");
+    //     //     console.log(frame);
+    //     // });
+    // });
+
+
+    // var number = setInterval(() => {
+    //     if (subscription)
+    //         client.send("/topic/something", headers = {}, body = 'ccccc');
+    // }, 3000);
+
+
+    // setTimeout(() => {
+    //     clearInterval(number);
+    //     subscription.unsubscribe();
+    //     client.disconnect(() => {
+    //         console.log("the client has closed!");
+    //     }, {})
+    //
+    // }, 7000);
+</script>
+
 </html>
